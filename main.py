@@ -1,10 +1,7 @@
-import os
-import streamlit as st
-import openai
+import components
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
-
-st.title("OH Test streamlit auth")
-user_input = st.text_input("Instructions", "Enter your instructions here")
-
-st.code(user_input, language="python")
+selected_temperature, selected_tokens = components.sidebar()
+components.header()
+user_input = components.user_instructions_input()
+transformed_user_input = components.openai_code(user_input, selected_temperature, selected_tokens)
+components.translated_instructions(transformed_user_input)

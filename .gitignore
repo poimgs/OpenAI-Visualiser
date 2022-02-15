@@ -1,2 +1,5 @@
 env
 .dccache
+.streamlit
+__pycache__
+*.pyc
